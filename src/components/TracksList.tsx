@@ -1,4 +1,4 @@
-import {song} from '../types/interfaces';
+import {Song} from '../types/interfaces';
 import {Divider, List, ListItem, ListItemButton, ListItemText, ListSubheader} from '@mui/material';
 import React from 'react';
 
@@ -6,7 +6,7 @@ import React from 'react';
 interface TracksListProps {
     isFetching: boolean;
     selectSong: Function;
-    songs: song[];
+    songs: Song[];
 }
 
 export default function TracksList({isFetching, selectSong, songs}: TracksListProps) {
@@ -22,7 +22,7 @@ export default function TracksList({isFetching, selectSong, songs}: TracksListPr
             </ListItem>
             }
 
-            {songs.map((trackData: song, i: number) => {
+            {songs.map((trackData: Song, i: number) => {
                 return (
                     <React.Fragment key={i}>
                         <ListItem disablePadding>
