@@ -1,30 +1,24 @@
-import AlbumsList from './components/AlbumsList';
-import {Box, Drawer} from '@mui/material';
-import React, {useState} from 'react';
-import Player from './components/Player';
+import {CssBaseline} from '@mui/material';
+import React from 'react';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import List from './components/albums/List';
+import Header from './components/header/Header';
 
-const drawerWidth = 240;
 
+function AppRoot() {
+	return (
+		<React.Fragment>
+			<Header/>
 
-export default function AppRoot() {
-    const [selectedAlbum, setSelectedAlbum] = useState(null);
+			<BrowserRouter>
+				<Routes>
+					<Route element={<List/>} path={'/'}/>
+				</Routes>
+			</BrowserRouter>
 
-    return (
-        <Box sx={{display: 'flex', height: 1, width: 1}}>
-            <Drawer
-                anchor='left'
-                sx={{
-                    width: drawerWidth,
-                    boxSizing: 'border-box',
-                    '& .MuiDrawer-paper': {
-                        width: drawerWidth,
-                        boxSizing: 'border-box'
-                    }
-                }}
-                variant='permanent'>
-                <AlbumsList setSelectedAlbum={setSelectedAlbum}/>
-            </Drawer>
-            <Player selectedAlbum={selectedAlbum}/>
-        </Box>
-    );
+			<CssBaseline/>
+        </React.Fragment>
+	);
 }
+
+export default AppRoot;

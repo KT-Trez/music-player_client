@@ -1,24 +1,28 @@
-export interface album {
+export interface Album {
     cover: {
-        exists: boolean;
-        name: string | undefined;
-        url: string | undefined;
-    };
-    name: string;
-    url: string;
-}
-
-export interface albumContent extends album {
-    size: number;
-    songs: song[];
-}
-
-export interface song {
-    album: {
+        cdn: string | undefined;
+        hasCover: boolean;
         name: string;
-        url: string;
     }
+    id: string;
     name: string;
+    path?: string;
     size: number;
-    url: string;
+}
+
+export interface Song {
+    album: {
+        id: string;
+        name: string;
+    }
+    cover: {
+        cdn: string | undefined;
+        hasCover: boolean;
+        name: string;
+    }
+    id: string;
+    cdn: string;
+    name: string;
+    path?: string;
+    size: number;
 }

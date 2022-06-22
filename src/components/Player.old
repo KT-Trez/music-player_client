@@ -1,5 +1,3 @@
-//noinspection JSIgnoredPromiseFromCall
-
 import styled from '@emotion/styled';
 import Tools from '../services/Tools';
 import {albumContent, song} from '../types/interfaces';
