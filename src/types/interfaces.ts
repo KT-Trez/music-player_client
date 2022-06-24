@@ -15,6 +15,11 @@ export interface Song {
         id: string;
         name: string;
     }
+    author: {
+        cdn: string;
+        name: string;
+        URL: string;
+    }
     cover: {
         cdn: string | undefined;
         hasCover: boolean;
