@@ -3,6 +3,7 @@ import React from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import List from './components/albums/List';
 import Header from './components/header/Header';
+import Player from './components/player/Player';
 
 
 function AppRoot() {
@@ -13,6 +14,7 @@ function AppRoot() {
 			<BrowserRouter>
 				<Routes>
 					<Route element={<List/>} path={'/'}/>
+					<Route element={<Player/>} path={'/player/:albumID'}/>
 				</Routes>
 			</BrowserRouter>
 

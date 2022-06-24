@@ -17,7 +17,7 @@ function Preview({albumID, isOpen}: PreviewProps) {
 			const contentArr = await axios({
 				method: 'get',
 				responseType: 'json',
-				url: '/albums/' + albumID
+				url: '/albums/content/' + albumID
 			});
 			setSongs(contentArr.data);
 		} catch (err) {
@@ -25,6 +25,7 @@ function Preview({albumID, isOpen}: PreviewProps) {
 		}
 	}, [albumID]);
 
+	// todo: load only when opened for the first time
 	useEffect(() => {
 		getContent();
 	}, [getContent]);

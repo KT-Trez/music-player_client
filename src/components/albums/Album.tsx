@@ -3,6 +3,7 @@ import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import {Box, Grid, IconButton, Paper, Skeleton, Stack, Typography} from '@mui/material';
 import axios from 'axios';
 import React, {useCallback, useEffect, useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 import {Album as IAlbum} from '../../types/interfaces';
 import Preview from './content/Preview';
 
@@ -12,6 +13,8 @@ interface AlbumProps {
 }
 
 function Album({metadata}: AlbumProps) {
+	const navigate = useNavigate();
+
 	const [coverBlobURL, setCoverBlobURL] = useState<string | undefined>(undefined);
 	const [coverLoading, setCoverLoading] = useState(true);
 
@@ -19,6 +22,10 @@ function Album({metadata}: AlbumProps) {
 
 	const convertToMB = (bytes: number) => {
 		return Math.round(bytes / 1024 / 1024 * 100) / 100;
+	};
+
+	const openPlayer = () => {
+	  navigate('/player/' + metadata.id);
 	};
 
 	const togglePreview = () => {
@@ -71,10 +78,10 @@ function Album({metadata}: AlbumProps) {
 							{convertToMB(metadata.size)} MB
 						</Typography>
 						<Stack direction={'row'} justifyContent={'flex-end'}>
-							<IconButton color={'primary'} edge={'end'} size={'large'}>
+							<IconButton color={'primary'} edge={'end'} onClick={openPlayer} size={'large'}>
 								<PlayCircleIcon/>
 							</IconButton>
-							<IconButton color={'primary'} onClick={togglePreview} edge={'end'} size={'large'}>
+							<IconButton color={'primary'} edge={'end'} onClick={togglePreview} size={'large'}>
 								<ExpandCircleDownIcon sx={{transform: previewOpen ? 'rotate(180deg)' : '', transition: '250ms'}}/>
 							</IconButton>
 						</Stack>

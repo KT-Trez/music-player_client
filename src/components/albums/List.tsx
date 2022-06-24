@@ -13,7 +13,7 @@ function List() {
 			const albumsArr = await axios({
 				method: 'get',
 				responseType: 'json',
-				url: '/albums/all'
+				url: '/albums'
 			});
 			setAlbums(albumsArr.data);
 		} catch (err) {
